@@ -1,7 +1,12 @@
 package edu.cpp.cs580.controller;
 
+import java.io.IOException;
 import java.util.List;
 
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -132,6 +137,47 @@ public class WebController {
 	List<User> listAllUsers() {
 		return userManager.listAllUsers();
 	}
+	
+	/**
+	 * Added by Shubhangi Shimpi
+	 *Try the method using --> http://localhost:8080/URLlink
+	 
+	 * @return
+	 */
+	
+	@RequestMapping(value = "/URLLink", method = RequestMethod.GET) 
+	String URLLink()
+	{
+		Document doc;
+        try 
+        {
+        
+            // need http protocol
+            doc = Jsoup.connect("https://mypvhc.com").get();
+
+            // get page title
+            String title = doc.title();
+            System.out.println("title : " + title);
+
+            // get all links
+            Elements links = doc.select("a[href]");
+            for (Element link : links) 
+            {
+
+                // get the value from href attribute
+                System.out.println("\nlink : " + link.attr("href"));
+                System.out.println("text : " + link.text());
+
+            }
+			
+        } 
+        
+        catch (IOException e) 
+        {
+            e.printStackTrace();
+        }
+        return "URL links Running";
+	}	
 
 	/*********** Web UI Test Utility **********/
 	/**
