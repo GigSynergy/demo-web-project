@@ -56,6 +56,7 @@
             <scope>test</scope>
         </dependency>
 
+		<!-- Added JSoup dependency by Shubhangi Shimpi -->
         <dependency>
 		    <groupId>org.jsoup</groupId>
 		    <artifactId>jsoup</artifactId>
