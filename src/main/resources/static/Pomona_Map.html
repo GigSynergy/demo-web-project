@@ -1,0 +1,34 @@
+<!-- This HTML file simply shows the map of the LA county, I used google
+javascript example and obtained google map key. Then set latlon for  Cal Poly Pomona!!. 
+In order to see how it works please right click and open it in your web browser
+Added by Tannaz Rezaei Damavandi for Assignment3 -->
+<!DOCTYPE html>
+<html>
+  <head>
+   <title>GoogleMap-Pomona</title>
+    <style>
+       #map {
+        height: 100%;
+      }
+        html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="map"></div>
+    <script>
+      var map;
+      function initialize() {
+        map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: 34.0565, lng: -117.8215},
+          zoom:18
+        });
+      }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAXpTvv5LUlHXrZCeCySeNBa7h-jbWBNGE&callback=initialize"
+    async defer></script>
+  </body>
+</html> 

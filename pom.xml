@@ -56,6 +56,14 @@
             <scope>test</scope>
         </dependency>
 
+		<!--  Add Google-map dependency by Tannaz Rezaei Damavandi-->
+		<dependency>
+		    <groupId>com.google.maps</groupId>
+		    <artifactId>google-maps-services</artifactId>
+		    <version>(insert latest version)</version>
+		</dependency>
+
+
 		<!-- Added JSoup dependency by Shubhangi Shimpi -->
         <dependency>
 		    <groupId>org.jsoup</groupId>
