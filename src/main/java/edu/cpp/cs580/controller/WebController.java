@@ -1,7 +1,7 @@
 package edu.cpp.cs580.controller;
 
-import java.io.IOException;
-import java.util.List;
+import java.io.*;
+import java.util.*;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -177,7 +177,44 @@ public class WebController {
             e.printStackTrace();
         }
         return "URL links Running";
-	}	
+	}
+
+
+	/**
+	 * Added by Irwin Soni
+	 *Try the methods using --> http://localhost:8080/getNameAndAddress
+                            --> http://localhost:8080/ReadFile
+	 
+	 * @return
+	 */
+	
+	@RequestMapping(value = "/getNameAndAddress", method = RequestMethod.GET) 
+	String getNameAndAddress(){
+		//gets name and address from the user
+        return "/Users/irwin/Documents/workspace/demo-web-project/src/main/resources/static/getNameAndAddress.html";
+	}
+
+
+	@RequestMapping(value = "/ReadFile", method = RequestMethod.GET) 
+	String readFile(){
+		private Scanner x;
+		try{
+			// opens and reads the file Test.txt
+			x = new Scanner(new File("Test.txt"));
+			while(x.hasNext()){
+				String a = x.next();
+				String b = x.next();
+				String c = x.next();
+				System.out.printf("%s %s %s\n", a,b,c);
+			}
+		}
+		
+		catch(Exception e){
+			System.out.println("File not found.");
+		}
+		
+		return "/Users/irwin/Documents/workspace/demo-web-project/src/main/resources/static/ReadFile.html";
+	}
 
 	/*********** Web UI Test Utility **********/
 	/**
