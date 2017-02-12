@@ -10,7 +10,9 @@ import edu.cpp.cs580.data.UrgentCareInfo;
 public class urlInfoTest 
 {
 	
-	/* Assignment 6 - Test to check if the list is Not NULL -- Done by Shubhangi Shimpi */
+	/* Assignment 6 - Test to check if the list is Not NULL -- Done by Shubhangi Shimpi
+	 * testing the method listInfo - uses Jsoup to scrape the list of urgent care from the yellow pages URL
+	 * testuciInfo tests if the returned list is not empty */
 	@Test
 	public void testuciInfo()
 	{
