@@ -193,8 +193,6 @@ public class WebController {
 		
 		return "/Users/irwin/Documents/workspace/demo-web-project/src/main/resources/static/ReadFile.html";
 	}
-=======
->>>>>>> Junit test for checking if list of Urgent care is null
 
 	/*********** Web UI Test Utility **********/
 	/**
