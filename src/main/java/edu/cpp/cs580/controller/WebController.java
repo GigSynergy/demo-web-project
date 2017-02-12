@@ -175,7 +175,7 @@ public class WebController {
 
 	@RequestMapping(value = "/ReadFile", method = RequestMethod.GET) 
 	String readFile(){
-		private Scanner x;
+		Scanner x;
 		try{
 			// opens and reads the file Test.txt
 			x = new Scanner(new File("Test.txt"));
