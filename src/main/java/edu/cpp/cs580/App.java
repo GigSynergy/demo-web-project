@@ -11,7 +11,9 @@ import org.springframework.context.annotation.Configuration;
 import edu.cpp.cs580.data.provider.EBayGpsProductManager;
 import edu.cpp.cs580.data.provider.FSUserManager;
 import edu.cpp.cs580.data.provider.GpsProductManager;
+import edu.cpp.cs580.data.provider.URLlinkManager;
 import edu.cpp.cs580.data.provider.UserManager;
+import edu.cpp.cs580.data.provider.urlInfo;
 
 @Configuration
 @EnableAutoConfiguration
@@ -37,6 +39,11 @@ public class App {
     		return gpsManager;
     }
 
+    @Bean
+    public URLlinkManager urllinkManager() {
+    	URLlinkManager urlInfo2Manager = new urlInfo();
+    		return urlInfo2Manager;
+    }
     /**
      * This is the running main method for the web application.
      * Please note that Spring requires that there is one and

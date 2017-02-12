@@ -4,9 +4,11 @@ var cs580App = angular.module('cs580App', []);
 
 cs580App.controller('GpsCtrl', function ($scope, $http) {
 
-  $scope.loadGps = function() {
+  $scope.loadGps = function() 
+  {
 	   $http.get("cs580/gpslist")
-	   	.success(function(data) {
+	   	.success(function(data) 
+	   			{
 	   		$scope.gpslist = data;
 	   });
   }

@@ -3,10 +3,7 @@ package edu.cpp.cs580.controller;
 import java.io.*;
 import java.util.*;
 
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,8 +14,10 @@ import org.springframework.web.servlet.ModelAndView;
 
 import edu.cpp.cs580.App;
 import edu.cpp.cs580.data.GpsProduct;
+import edu.cpp.cs580.data.UrgentCareInfo;
 import edu.cpp.cs580.data.User;
 import edu.cpp.cs580.data.provider.GpsProductManager;
+import edu.cpp.cs580.data.provider.URLlinkManager;
 import edu.cpp.cs580.data.provider.UserManager;
 
 
@@ -45,6 +44,9 @@ public class WebController {
 	private UserManager userManager;
 	@Autowired
 	private GpsProductManager gpsManager;
+	
+	@Autowired
+	private URLlinkManager urlInfo2Manager ;
 
 	/**
 	 * This is a simple example of how the HTTP API works.
@@ -68,6 +70,20 @@ public class WebController {
 		// with the URL: http://localhost:8080/
 		return gpsManager.listGps();
 	}
+	
+	/**
+	 * Added by Shubhangi Shimpi
+	 * Try the method using --> http://localhost:8080/URLlink
+	 
+	 * @return
+	 */
+	
+	@RequestMapping(value = "/cs580/ucilist", method = RequestMethod.GET) 
+	List<UrgentCareInfo> listInfo()
+	{
+		return urlInfo2Manager.listInfo();
+
+	}	
 
 	/**
 	 * This is a simple example of how to use a data manager
@@ -138,46 +154,8 @@ public class WebController {
 		return userManager.listAllUsers();
 	}
 	
-	/**
-	 * Added by Shubhangi Shimpi
-	 *Try the method using --> http://localhost:8080/URLlink
-	 
-	 * @return
-	 */
 	
-	@RequestMapping(value = "/URLLink", method = RequestMethod.GET) 
-	String URLLink()
-	{
-		Document doc;
-        try 
-        {
-        
-            // need http protocol
-            doc = Jsoup.connect("https://mypvhc.com").get();
 
-            // get page title
-            String title = doc.title();
-            System.out.println("title : " + title);
-
-            // get all links
-            Elements links = doc.select("a[href]");
-            for (Element link : links) 
-            {
-
-                // get the value from href attribute
-                System.out.println("\nlink : " + link.attr("href"));
-                System.out.println("text : " + link.text());
-
-            }
-			
-        } 
-        
-        catch (IOException e) 
-        {
-            e.printStackTrace();
-        }
-        return "URL links Running";
-	}
 
 
 	/**
@@ -215,6 +193,8 @@ public class WebController {
 		
 		return "/Users/irwin/Documents/workspace/demo-web-project/src/main/resources/static/ReadFile.html";
 	}
+=======
+>>>>>>> Junit test for checking if list of Urgent care is null
 
 	/*********** Web UI Test Utility **********/
 	/**

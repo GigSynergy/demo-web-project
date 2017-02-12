@@ -53,5 +53,7 @@ public class EBayGpsProductManager implements GpsProductManager {
 
 		return gpsProducts;
 	}
+	
+	
 
 }
