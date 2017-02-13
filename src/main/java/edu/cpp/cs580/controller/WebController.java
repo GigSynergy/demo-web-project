@@ -167,32 +167,34 @@ public class WebController {
 	 */
 	
 	@RequestMapping(value = "/getNameAndAddress", method = RequestMethod.GET) 
-	String getNameAndAddress(){
+	public static String getNameAndAddress(){
 		//gets name and address from the user
         return "/Users/irwin/Documents/workspace/demo-web-project/src/main/resources/static/getNameAndAddress.html";
 	}
 
 
 	@RequestMapping(value = "/ReadFile", method = RequestMethod.GET) 
-	String readFile(){
-		Scanner x;
+	public void readFile(){
+		
+		File filename = new File("/Users/irwin/Documents/workspace/demo-web-project/src/main/resources/static/ReadFile.html");
+		Scanner scan = null;
+		
 		try{
-			// opens and reads the file Test.txt
-			x = new Scanner(new File("Test.txt"));
-			while(x.hasNext()){
-				String a = x.next();
-				String b = x.next();
-				String c = x.next();
-				System.out.printf("%s %s %s\n", a,b,c);
+			scan = new Scanner(filename);
+			
+			// opens and reads the file ReadFile.html
+			
+			while(scan.hasNextLine()){
+				System.out.println(scan.nextLine());
+				
 			}
+			}
+		catch(FileNotFoundException e){
+			e.printStackTrace();
+		}
 		}
 		
-		catch(Exception e){
-			System.out.println("File not found.");
-		}
 		
-		return "/Users/irwin/Documents/workspace/demo-web-project/src/main/resources/static/ReadFile.html";
-	}
 
 	/*********** Web UI Test Utility **********/
 	/**
