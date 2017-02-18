@@ -5,8 +5,6 @@ import org.junit.Assert;
 import org.junit.Test;
 import edu.cpp.cs580.data.UrgentCareInfo;
 
-
-
 public class urlInfoTest 
 {
 	
