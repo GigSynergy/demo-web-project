@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>edu.cpp.cs580</groupId>
-	<artifactId>urgentcare</artifactId>
+	<artifactId>cs580</artifactId>
 	<version>1.0</version>
 	<packaging>jar</packaging>
 
@@ -95,6 +95,7 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				
 			</plugin>
 			<plugin>
 		        <groupId>org.apache.maven.plugins</groupId>
