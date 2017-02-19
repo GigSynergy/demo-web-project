@@ -38,12 +38,14 @@ public class EBayGpsProductManager implements GpsProductManager {
 			for(Element e : elements3) {
 				System.out.println(e.attr("src"));
 			}
-
+/* This following for loop had a bug - 0 to i in lines 
+46-48 - in order to see if // jenkins triggers new build
+ after push this new code to github or not- added by Tannaz rezaei on 02192017*/
 			for(int i = 0; i < 10; i++) {
 				GpsProduct g = new GpsProduct(
-						elements.get(0).text(),
-						elements2.get(0).text(),
-						elements3.get(0).attr("src"));
+						elements.get(i).text(),
+						elements2.get(i).text(),
+						elements3.get(i).attr("src"));
 				gpsProducts.add(g);
 			}
 		} catch (IOException e1) {
