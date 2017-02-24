@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <title>Urgent Care Finder</title>
+    <style>
+      
+      #map {
+        height: 100%;
+      }
+      
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      #right-panel {
+        font-family: 'Roboto','sans-serif';
+        line-height: 30px;
+        padding-left: 10px;
+      }
+
+      #right-panel select, #right-panel input {
+        font-size: 15px;
+      }
+
+      #right-panel select {
+        width: 400%;
+      }
+
+      #right-panel i {
+        font-size: 12px;
+      }
+      #right-panel {
+        font-family: Arial, Helvetica, sans-serif;
+        position: absolute;
+        right: 10px;
+        top: 30%;
+        margin-top: -195px;
+        height: 100% ;
+        width: 400px;
+        padding: 5px;
+        z-index: 5;
+        border: 1px solid #999;
+        background: #fff;
+      }
+      h2 {
+        font-size: 22px;
+        margin: 0 0 5px 0;
+      }
+      ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+        height: 95% ;
+        width: 400px;
+        overflow-y: scroll;
+      }
+      li {
+        background-color: #f1f1f1;
+        padding: 10px;
+        text-overflow: ellipsis;
+        white-space: wrap ;
+        overflow: scroll;
+      }
+      li:nth-child(odd) {
+        background-color: #fcfcfc;
+      }
+
+      .button {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+   }
+
+    
+    </style>
+    <script>
+      
+      var map;
+
+      function initMap() {
+        var mapCenter = {lat: 34.0565284, lng: -117.8237182};
+
+        map = new google.maps.Map(document.getElementById('map'), {
+          center: mapCenter,
+          zoom: 12
+        });
+        
+        var request = {
+          location: mapCenter,
+            radius: 9000,
+           query: 'Urgent Care'
+         };
+
+          var infowindow = new google.maps.InfoWindow();
+        
+
+        var service = new google.maps.places.PlacesService(map);
+        service.textSearch(request, processResults);
+         
+         }
+         
+
+      function processResults(results, status, pagination) {
+        if (status !== google.maps.places.PlacesServiceStatus.OK) {
+          return;
+        } else {
+          createMarkers(results);
+
+          
+        }
+      }
+
+
+      function goToURL() {
+       window.open('file:///Users/irwin/Desktop/form.html');
+      }
+
+
+
+      function createMarkers(places) {
+        var bounds = new google.maps.LatLngBounds();
+        /* var btn = document.getElementbyType('button'); */
+         
+        var placesList = document.getElementById('places');
+
+        for (var i = 0, place; place = places[i]; i++) {
+          var image = {
+            url: place.icon,
+            size: new google.maps.Size(71, 71),
+            origin: new google.maps.Point(0, 0),
+            anchor: new google.maps.Point(17, 34),
+            scaledSize: new google.maps.Size(25, 25)
+          };
+
+          var marker = new google.maps.Marker({
+            map: map,
+            icon: image,
+            title: place.name, 
+            position: place.geometry.location,
+          });
+
+          placesList.innerHTML += '<li>' + place.name  + '<br/>' + 'Rating: ' + place.rating + '/5' + '<br/>' + 'Address: ' + place.formatted_address + '<br/>' + 'Waiting Time: ' +  Math.floor((Math.random() * 10) + 1) + '<br/>' +  +'</li>';
+
+
+          bounds.extend(place.geometry.location);
+        }
+        map.fitBounds(bounds);
+
+        google.maps.event.addListener(marker, 'click', function(){
+       infowindow.setContent(place.name);
+       infowindow.open(map, marker);
+        });
+       
+       }
+      
+
+      google.maps.event.addDomListener(window, 'load', initialize);
+  
+    </script>
+  </head>
+  <body>
+    <div id="map"></div>
+    <div id="right-panel">
+      <h2>Results</h2>
+      <ul id="places"></ul>
+      <button type="button" onclick="goToURL()">Check-in</button>
+    </div>
+  
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA8Dyo0PhM0aY-oHFCKP0rUH0UL-MfjmPU&libraries=places&callback=initMap" async defer>
+    </script>
+  </body>
+</html>
