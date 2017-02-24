@@ -32,7 +32,7 @@ public class App {
         UserManager userManager =  new FSUserManager();
         return userManager;
     }
-
+    
     @Bean
     public GpsProductManager gpsProductManager() {
     		GpsProductManager gpsManager = new EBayGpsProductManager();

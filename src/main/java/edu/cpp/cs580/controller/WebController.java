@@ -84,7 +84,9 @@ public class WebController {
 		return urlInfo2Manager.listInfo();
 
 	}	
-
+	
+	
+	
 	/**
 	 * This is a simple example of how to use a data manager
 	 * to retrieve the data and return it as an HTTP response.
@@ -100,6 +102,13 @@ public class WebController {
 	User getUser(@PathVariable("userId") String userId) {
 		User user = userManager.getUser(userId);
 		return user;
+	}
+	
+	@RequestMapping(value = "/cs580/uczip", method = RequestMethod.GET)
+	 String getZip(@PathVariable("zipc") String zipcode) 
+	{
+		System.out.print("Zipcode entered is" + zipcode);
+		return zipcode;
 	}
 
 	/**

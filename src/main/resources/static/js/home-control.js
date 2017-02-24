@@ -1,6 +1,7 @@
 // This is the version used for regular HTML + FreeMarker with jQuery
 
-function healthCheck() {
+function healthCheck() 
+{
 	$.ajax(
 			{
 				type : "GET",
@@ -16,6 +17,31 @@ function healthCheck() {
 			});
 }
 
+function getZip()
+{
+	var zipc = $('#zipcode').val();
+	
+	if(zipc)
+	{
+	$.ajax(
+			{ 
+				type :"GET"
+				url : "/cs580/urgentc"+ zipc,
+				data : { },
+				success : function(result) 
+				{
+						location.reload();
+				},
+				error: function (jqXHR, exception)
+				{
+					alert("Failed to locate urgent care. Please input correct zipcode.");
+				}
+			});		
+	}
+	else{
+			alert("Invalid Zipcode");
+		}		
+}
 
 function deleteUser(userId) {
 	$.ajax(
