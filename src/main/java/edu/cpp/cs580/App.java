@@ -1,7 +1,7 @@
 package edu.cpp.cs580;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+//import org.slf4j.Logger;
+//import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.Bean;
@@ -20,7 +20,7 @@ import edu.cpp.cs580.data.provider.urlInfo;
 @ComponentScan
 public class App {
 
-	private static final Logger logger = LoggerFactory.getLogger(App.class.getName());
+	//private static final Logger logger = LoggerFactory.getLogger(App.class.getName());
     /**
      * This is a good example of how Spring instantiates
      * objects. The instances generated from this method
