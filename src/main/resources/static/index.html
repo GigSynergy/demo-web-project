@@ -2,25 +2,24 @@
 	<!-- This page will be shown when you git the root URL -->
 	<head>
 	    <title>Enter Zipcode to search nearest Urgent Care</title>
-	   
-	    
 	    <script language="javascript" type="text/javascript" src="js/searchzip.js"></script>
 	</head>
 	
-	<body >
+	<body>
 	
-	<form method="get" id="chooseZip">
-			<button type="submit" class="learnButton">Use current location</button>
-			<button type="button" id="searchZip" class="learnButton">Search by Zip Code</button>
-			<div class="clear"></div>
-			<div class="zipSearch">
-				<input id="textZip" type="text" name="zip" placeholder="enter your zip code" autofocus>
-				<button type="submit" class="learnButton">Search</button>
-			</div>
-			<div class="clear"></div>
-		</form>
+    <input type="text" id="userInput"=>Enter Zip Code</input>
+    <button onclick="test()">Submit</button>
+
+	<p id="demo"></p>   
+
+	<script type="text/javascript">
+	function test()
+	{
+		var userInput = document.getElementById("userInput").value;
+	    document.getElementById("demo").innerHTML = userInput;
+	}
+	</script>
+	
 	</body>
-	
-	<!-- <body onload="healthCheck();"> Demo Project is running: <label id="status"></label> </body> -->
 
 </html>
