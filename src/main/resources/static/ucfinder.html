@@ -1,250 +1,509 @@
-<!-- Created by Bhavana Prasanthi and Irwin Soni-->
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
-    <meta charset="utf-8">
-    <title>UC locations</title>
-    <style>
-      #map {
-        height: 100%;
-      }
-      
-      html, body {
-        height: 100%;
-        margin: 0;
-        padding: 0;
-      }
-
-      #description {
-        font-family: Roboto;
-        font-size: 15px;
-        font-weight: 300;
-      }
-
-      #infowindow-content .title {
-        font-weight: bold;
-      }
-
-      #infowindow-content {
-        display: none;
-      }
-
-      #map #infowindow-content {
-        display: inline;
-      }
-
-      .pac-card {
-        margin: 10px 10px 0 0;
-        border-radius: 2px 0 0 2px;
-        box-sizing: border-box;
-        -moz-box-sizing: border-box;
-        outline: none;
-        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-        background-color: #fff;
-        font-family: Times New Roman;
-      }
-
-      #pac-container {
-        padding-bottom: 12px;
-        margin-right: 12px;
-      }
-
-      .pac-controls {
-        display: inline-block;
-        padding: 5px 11px;
-      }
-
-      .pac-controls label {
-        font-family: Times New Roman;
-        font-size: 13px;
-        font-weight: 300;
-      }
-
-      #pac-input {
-        background-color: #fff;
-        font-family: Times New Roman;
-        font-size: 15px;
-        font-weight: 300;
-        margin-left: 12px;
-        padding: 0 11px 0 13px;
-        width: 400px;
-      }
-
-      #pac-input:focus {
-        border-color: #4d90fe;
-      }
-
-      #title {
-        color: #fff;
-        background-color: #4d90fe;
-        font-size: 25px;
-        font-weight: 500;
-        padding: 6px 12px;
-      }
-      #target {
-        width: 345px;
-      }
-
-      #right-panel {
-        font-family: 'Roboto','sans-serif';
-        line-height: 30px;
-        padding-left: 10px;
-      }
-
-      #right-panel select, #right-panel input {
-        font-size: 15px;
-      }
-
-      #right-panel select {
-        width: 400%;
-      }
-
-      #right-panel i {
-        font-size: 12px;
-      }
-      #right-panel {
-        font-family: Arial, Helvetica, sans-serif;
-        position: absolute;
-        right: 10px;
-        top: 30%;
-        margin-top: -195px;
-        height: 100% ;
-        width: 400px;
-        padding: 5px;
-        z-index: 5;
-        border: 1px solid #999;
-        background: #fff;
-      }
-      h2 {
-        font-size: 22px;
-        margin: 0 0 5px 0;
-      }
-      ul {
-        list-style-type: none;
-        padding: 0;
-        margin: 0;
-        height: 95% ;
-        width: 400px;
-        overflow-y: scroll;
-      }
-      li {
-        background-color: #f1f1f1;
-        padding: 10px;
-        text-overflow: ellipsis;
-        white-space: wrap ;
-        overflow: scroll;
-      }
-      li:nth-child(odd) {
-        background-color: #fcfcfc;
-      }
-
-    input[type=button]  {
-    background-color: #4CAF50;
-    border: none;
-    color: white;
-    padding: 16px 32px;
-    text-decoration: none;
-    margin: 4px 2px;
-    cursor: pointer;
-  }
-
-  </style>
-  </head>
-  <body>
-   <input id="pac-input" class="controls" type="text">
-    <div id="map"></div>
-    
-    <div id="right-panel">
-      <h2>Results</h2>
-      <ul id="places">
-      <input type="button" id="button" value="Check-In" onclick="goToURL()">
-      </ul>
-      
-      </div> 
-
-    <script>
-  
-      function initAutocomplete() {
-          var map = new google.maps.Map(document.getElementById('map'), {
-          center: {lat: -33.8688, lng: 151.2195},
-          zoom: 15,
-        });
-
-          var input = document.getElementById('pac-input');
-          input.value += "Urgent Care Near: " ;   
-          var searchBox = new google.maps.places.SearchBox(input);
-          map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
-
-        
-          map.addListener('bounds_changed', function() {
-          searchBox.setBounds(map.getBounds());
-        });
-
-          var markers = [];
-          searchBox.addListener('places_changed', function() {
-          var places = searchBox.getPlaces();
-
-          if (places.length == 0) {
-            return;
-          }
-
-          
-          markers.forEach(function(marker) {
-            marker.setMap(null);
-        });
-          markers = [];
-          var bounds = new google.maps.LatLngBounds();
-          places.forEach(function(place) {
-            if (!place.geometry) {
-            console.log("Returned place contains no geometry");
-            return;
-        }
-
-          var icon = {
-          url: place.icon,
-          size: new google.maps.Size(71, 71),
-          origin: new google.maps.Point(0, 0),
-          anchor: new google.maps.Point(17, 34),
-          scaledSize: new google.maps.Size(25, 25)
-       };
-
-            markers.push(new google.maps.Marker({
-            map: map,
-            icon: icon,
-            title: place.name,
-            position: place.geometry.location
-
-       }));
-
-            var placesList = document.getElementById('places');
-
-            placesList.innerHTML += '<li>' + place.name  + '<br/>' + 'Rating: ' + place.rating + '/5' + '<br/>' + 'Address: ' + place.formatted_address + '<br/>' + 'Waiting Time: ' +  Math.floor((Math.random() * 10) + 1)  + '<br/>' + document.getElementById("button") +'</li>';
-
-
-            if (place.geometry.viewport) {
-              
-              bounds.union(place.geometry.viewport);
-            } else {
-              bounds.extend(place.geometry.location);
-            }
-          });
-          map.fitBounds(bounds);
-        });
-      }
-
-      var b = [];
-      function myFunction(){ 
-       b = new document.createElement("BUTTON");
-      }
-      
-      function goToURL() {
-       window.open('file:///Users/irwin/Desktop/form.html');
-      } 
-
-    </script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA8Dyo0PhM0aY-oHFCKP0rUH0UL-MfjmPU&libraries=places&callback=initAutocomplete"
-         async defer>
-    </script>
-  </body>
+<!-- Created by Bhavana Prasanthi and Irwin Soni-->
+
+<!DOCTYPE html>
+
+<html>
+
+  <head>
+
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+
+    <meta charset="utf-8">
+
+    <title>UC locations</title>
+
+    <style>
+
+      #map {
+
+        height: 100%;
+
+      }
+
+      
+
+      html, body {
+
+        height: 100%;
+
+        margin: 0;
+
+        padding: 0;
+
+      }
+
+
+
+      #description {
+
+        font-family: Roboto;
+
+        font-size: 15px;
+
+        font-weight: 300;
+
+      }
+
+
+
+      #infowindow-content .title {
+
+        font-weight: bold;
+
+      }
+
+
+
+      #infowindow-content {
+
+        display: none;
+
+      }
+
+
+
+      #map #infowindow-content {
+
+        display: inline;
+
+      }
+
+
+
+      .pac-card {
+
+        margin: 10px 10px 0 0;
+
+        border-radius: 2px 0 0 2px;
+
+        box-sizing: border-box;
+
+        -moz-box-sizing: border-box;
+
+        outline: none;
+
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+
+        background-color: #fff;
+
+        font-family: Times New Roman;
+
+      }
+
+
+
+      #pac-container {
+
+        padding-bottom: 12px;
+
+        margin-right: 12px;
+
+      }
+
+
+
+      .pac-controls {
+
+        display: inline-block;
+
+        padding: 5px 11px;
+
+      }
+
+
+
+      .pac-controls label {
+
+        font-family: Times New Roman;
+
+        font-size: 13px;
+
+        font-weight: 300;
+
+      }
+
+
+
+      #pac-input {
+
+        background-color: #fff;
+
+        font-family: Times New Roman;
+
+        font-size: 15px;
+
+        font-weight: 300;
+
+        margin-left: 12px;
+
+        padding: 0 11px 0 13px;
+
+        width: 400px;
+
+      }
+
+
+
+      #pac-input:focus {
+
+        border-color: #4d90fe;
+
+      }
+
+
+
+      #title {
+
+        color: #fff;
+
+        background-color: #4d90fe;
+
+        font-size: 25px;
+
+        font-weight: 500;
+
+        padding: 6px 12px;
+
+      }
+
+      #target {
+
+        width: 345px;
+
+      }
+
+
+
+      #right-panel {
+
+        font-family: 'Roboto','sans-serif';
+
+        line-height: 30px;
+
+        padding-left: 10px;
+
+      }
+
+
+
+      #right-panel select, #right-panel input {
+
+        font-size: 15px;
+
+      }
+
+
+
+      #right-panel select {
+
+        width: 400%;
+
+      }
+
+
+
+      #right-panel i {
+
+        font-size: 12px;
+
+      }
+
+      #right-panel {
+
+        font-family: Arial, Helvetica, sans-serif;
+
+        position: absolute;
+
+        right: 10px;
+
+        top: 30%;
+
+        margin-top: -195px;
+
+        height: 100% ;
+
+        width: 400px;
+
+        padding: 5px;
+
+        z-index: 5;
+
+        border: 1px solid #999;
+
+        background: #fff;
+
+      }
+
+      h2 {
+
+        font-size: 22px;
+
+        margin: 0 0 5px 0;
+
+      }
+
+      ul {
+
+        list-style-type: none;
+
+        padding: 0;
+
+        margin: 0;
+
+        height: 95% ;
+
+        width: 400px;
+
+        overflow-y: scroll;
+
+      }
+
+      li {
+
+        background-color: #f1f1f1;
+
+        padding: 10px;
+
+        text-overflow: ellipsis;
+
+        white-space: wrap ;
+
+        overflow: scroll;
+
+      }
+
+      li:nth-child(odd) {
+
+        background-color: #fcfcfc;
+
+      }
+
+
+
+    input[type=button]  {
+
+    background-color: #4CAF50;
+
+    border: none;
+
+    color: white;
+
+    padding: 16px 32px;
+
+    text-decoration: none;
+
+    margin: 4px 2px;
+
+    cursor: pointer;
+
+  }
+
+
+
+  </style>
+
+  </head>
+
+  <body>
+
+   <input id="pac-input" class="controls" type="text">
+
+    <div id="map"></div>
+
+    
+
+    <div id="right-panel">
+
+      <h2>Results</h2>
+
+      <ul id="places">
+      </ul>
+
+      
+
+      </div> 
+
+
+
+    <script>
+
+      var placeArray = [];
+
+      function initAutocomplete() {
+
+          var map = new google.maps.Map(document.getElementById('map'), {
+
+          center: {lat: -33.8688, lng: 151.2195},
+
+          zoom: 15,
+
+        });
+
+
+
+          var input = document.getElementById('pac-input');
+
+          input.value += "Urgent Care Near: " ;   
+
+          var searchBox = new google.maps.places.SearchBox(input);
+
+          map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+
+
+
+        
+
+          map.addListener('bounds_changed', function() {
+
+          searchBox.setBounds(map.getBounds());
+
+        });
+
+
+
+          var markers = [];
+
+          searchBox.addListener('places_changed', function() {
+
+          var places = searchBox.getPlaces();
+
+
+
+          if (places.length == 0) {
+
+            return;
+
+          }
+
+
+
+          
+
+          markers.forEach(function(marker) {
+
+            marker.setMap(null);
+
+        });
+
+          markers = [];
+
+          var bounds = new google.maps.LatLngBounds();
+
+          places.forEach(function(place) {
+
+            if (!place.geometry) {
+
+            console.log("Returned place contains no geometry");
+
+            return;
+
+        }
+
+
+
+          var icon = {
+
+          url: place.icon,
+
+          size: new google.maps.Size(71, 71),
+
+          origin: new google.maps.Point(0, 0),
+
+          anchor: new google.maps.Point(17, 34),
+
+          scaledSize: new google.maps.Size(25, 25)
+
+       };
+
+
+
+            markers.push(new google.maps.Marker({
+
+            map: map,
+
+            icon: icon,
+
+            title: place.name,
+
+            position: place.geometry.location
+
+
+
+       }));
+
+            var i = 0;
+
+            var placesList = [];
+
+            placesList = document.getElementById('places');
+
+            
+            placesList.innerHTML += '<li>' + place.name  + '<br/>' + 'Rating: ' + place.rating + '/5' + '<br/>' + 'Address: ' + place.formatted_address + '<br/>' + 'Waiting Time: ' +  Math.floor((Math.random() * 30) + 1)  + '<br/>' + '</li>';
+
+            
+            placeArray[i] = document.createElement("button");
+
+            var text = document.createTextNode("Check-In");
+            placeArray[i].appendChild(text);
+            
+            placesList.appendChild(placeArray[i]);
+
+            placeArray[0].onclick = function() { 
+                   alert("blabla");
+                   window.open('https://google.com/');
+           };             
+
+           i = i + 1;
+           console.log("i=" + i);            
+          
+
+           if (place.geometry.viewport) { 
+
+           bounds.union(place.geometry.viewport);
+
+           } else {
+
+              bounds.extend(place.geometry.location);
+
+           }
+
+          });
+
+          map.fitBounds(bounds);
+
+        });
+
+      }
+
+
+
+
+      var b = [];
+
+      function myFunction(){ 
+
+       b = new document.createElement("BUTTON");
+
+      }
+
+      
+
+      function goToURL() {
+
+       window.open('file:///Users/irwin/Desktop/form.html');
+
+      } 
+
+
+
+    </script>
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA8Dyo0PhM0aY-oHFCKP0rUH0UL-MfjmPU&libraries=places&callback=initAutocomplete"
+
+         async defer>
+
+    </script>
+
+  </body>
+
 </html>
