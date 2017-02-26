@@ -44,6 +44,18 @@ public class App {
     	URLlinkManager urlInfo2Manager = new urlInfo();
     		return urlInfo2Manager;
     }
+    
+    
+    /*@Bean(name = "dataSource")
+	public DriverManagerDataSource dataSource() {
+	    DriverManagerDataSource driverManagerDataSource = new DriverManagerDataSource();
+	    driverManagerDataSource.setDriverClassName("com.mysql.jdbc.Driver");
+	    driverManagerDataSource.setUrl("jdbc:mysql://localhost:3306/urgentcare");
+	    driverManagerDataSource.setUsername("user");
+	    driverManagerDataSource.setPassword("password");
+	    return driverManagerDataSource;
+	}*/
+    
     /**
      * This is the running main method for the web application.
      * Please note that Spring requires that there is one and
