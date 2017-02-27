@@ -47,7 +47,10 @@ public class WebController {
 	
 	@Autowired
 	private URLlinkManager urlInfo2Manager ;
-
+	
+	 /*@Autowired
+	  private PatientDao patientDao;
+	  */
 	/**
 	 * This is a simple example of how the HTTP API works.
 	 * It returns a String "OK" in the HTTP response.
@@ -85,7 +88,19 @@ public class WebController {
 
 	}	
 	
-	
+	/*/Adding patient to DB
+	@RequestMapping(value="/save")
+	  @ResponseBody
+	  public String create(String fname, String mname, String lname, String phone) {
+	    try {
+	      User patient = new Patient(fname,mname, lname, phone);
+	      patientDao.save(patient);
+	    }
+	    catch(Exception ex) {
+	      return ex.getMessage();
+	    }
+	    return "Success!";
+	  }*/
 	
 	/**
 	 * This is a simple example of how to use a data manager
