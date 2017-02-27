@@ -438,23 +438,26 @@
             placesList = document.getElementById('places');
 
             
-            placesList.innerHTML += '<li>' + place.name  + '<br/>' + 'Rating: ' + place.rating + '/5' + '<br/>' + 'Address: ' + place.formatted_address + '<br/>' + 'Waiting Time: ' +  Math.floor((Math.random() * 30) + 1)  + '<br/>' + '</li>';
+            placesList.innerHTML += '<li>' + '<br/>'+ place.name  + '<br/>' + 'Rating: ' + place.rating + '/5' + '<br/>' + 'Address: ' + place.formatted_address + '<br/>' + 'Waiting Time: ' +  Math.floor((Math.random() * 30) + 1)  + '<br/>' + '</li>';
 
             
             placeArray[i] = document.createElement("button");
 
             var text = document.createTextNode("Check-In");
+
             placeArray[i].appendChild(text);
+
             
             placesList.appendChild(placeArray[i]);
-
+            
             placeArray[0].onclick = function() { 
                    alert("blabla");
                    window.open('https://google.com/');
            };             
 
            i = i + 1;
-           console.log("i=" + i);            
+           console.log("i=" + i); 
+
           
 
            if (place.geometry.viewport) { 

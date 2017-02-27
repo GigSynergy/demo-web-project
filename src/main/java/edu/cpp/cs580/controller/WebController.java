@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import edu.cpp.cs580.App;
 import edu.cpp.cs580.data.GpsProduct;
@@ -19,6 +21,7 @@ import edu.cpp.cs580.data.User;
 import edu.cpp.cs580.data.provider.GpsProductManager;
 import edu.cpp.cs580.data.provider.URLlinkManager;
 import edu.cpp.cs580.data.provider.UserManager;
+import edu.cpp.cs580.data.provider.JDBCconnection;
 
 
 /**
@@ -47,7 +50,14 @@ public class WebController {
 	
 	@Autowired
 	private URLlinkManager urlInfo2Manager ;
-
+	
+	 /*@Autowired
+	JDBCconnection jconnection;
+	
+	@Autowired
+	private PatientManager patientManager
+	  */
+	
 	/**
 	 * This is a simple example of how the HTTP API works.
 	 * It returns a String "OK" in the HTTP response.
@@ -85,7 +95,24 @@ public class WebController {
 
 	}	
 	
-	
+	/*/Adding patient to DB
+	@RequestMapping(value = "/register", method = RequestMethod.POST, consumes = "application/json")
+	public boolean register(@RequestBody String registerDetails) throws JsonParseException, JsonMappingException, IOException {
+            Gson gson = new GsonBuilder().create();
+            Register register = gson.fromJson(registerDetails, Register.class);
+            List<String> list = new ArrayList<>();
+            list = patientManager.isPatientExist(register.getEmail());
+
+            if (list.isEmpty()) {
+                patientManager.register(register);
+                return true;
+            } 
+            else 
+            {
+                return false;
+            }
+	}
+	  }*/
 	
 	/**
 	 * This is a simple example of how to use a data manager

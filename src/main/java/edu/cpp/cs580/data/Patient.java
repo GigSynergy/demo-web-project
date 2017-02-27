@@ -1,5 +1,5 @@
 package edu.cpp.cs580.data;
-
+//class patient -set and get method
 public class Patient 
 
 {

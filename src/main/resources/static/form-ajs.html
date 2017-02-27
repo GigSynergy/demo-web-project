@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+
+<body ng-controller="patient-controller" ng-model="patient">
+  <form>
+  	
+    First Name:   
+    <input type="text" ng-model="patient.firstName"><br>
+    Middle Name:
+    <input type="text" ng-model="patient.middleName"><br>
+    Last Name:
+    <input type="text" ng-model="patient.lastName"><br>
+    Phone Number:
+    <input type="text" ng-model="patient.phone"><br>
+    UC Name:
+    <input type="text" ng-model="patient.ucName"><br>
+    Wait Time :
+    <input type="text" ng-model="patient.waitTime"><br>
+    <br><br>
+    <button ng-click="addPatient()">SUBMIT</button>
+ 
+  </form>
+</body>
+</html>
+
