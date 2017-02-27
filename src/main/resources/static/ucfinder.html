@@ -435,11 +435,14 @@
 
             var placesList = [];
 
+		<!-- script for getting the list of Urgent Care --> 
+		
             placesList = document.getElementById('places');
 
             
             placesList.innerHTML += '<li>' + place.name  + '<br/>' + 'Rating: ' + place.rating + '/5' + '<br/>' + 'Address: ' + place.formatted_address + '<br/>' + 'Waiting Time: ' +  Math.floor((Math.random() * 30) + 1)  + '<br/>' + '</li>';
 
+           
             
             placeArray[i] = document.createElement("button");
 
@@ -454,7 +457,7 @@
            };             
 
            i = i + 1;
-           console.log("i=" + i);            
+           <!-- console.log("i=" + i);   -->          
           
 
            if (place.geometry.viewport) { 
