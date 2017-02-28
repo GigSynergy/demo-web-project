@@ -1,27 +1,29 @@
 package edu.cpp.cs580.controller;
 
-import java.io.*;
-import java.util.*;
-
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.List;
+import java.util.Scanner;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 
 import edu.cpp.cs580.App;
 import edu.cpp.cs580.data.GpsProduct;
+import edu.cpp.cs580.data.Patient;
 import edu.cpp.cs580.data.UrgentCareInfo;
 import edu.cpp.cs580.data.User;
 import edu.cpp.cs580.data.provider.GpsProductManager;
+import edu.cpp.cs580.data.provider.UCPatientManager;
 import edu.cpp.cs580.data.provider.URLlinkManager;
 import edu.cpp.cs580.data.provider.UserManager;
-import edu.cpp.cs580.data.provider.JDBCconnection;
+
 
 
 /**
@@ -51,12 +53,12 @@ public class WebController {
 	@Autowired
 	private URLlinkManager urlInfo2Manager ;
 	
-	 /*@Autowired
-	JDBCconnection jconnection;
+	//@Autowired
+	//private JDBCConnManager  jconnection;
 	
 	@Autowired
-	private PatientManager patientManager
-	  */
+	private UCPatientManager patientManager;
+	
 	
 	/**
 	 * This is a simple example of how the HTTP API works.
@@ -94,6 +96,24 @@ public class WebController {
 		return urlInfo2Manager.listInfo();
 
 	}	
+	
+	// Request Mapping Method for adding a patient.
+	/*
+	 * {
+	 * 	"firstName" : "Yu",
+	 *  "lastName" : "Sun",
+	 *  ..
+	 *  ..
+	 *  ..
+	 *  ..
+	 * }
+	 */
+	@RequestMapping(value = "/cs580/patient", method = RequestMethod.POST)
+	public boolean  InsertPatient(@RequestBody Patient patient) {
+		System.out.println(patient.getfirstName());
+		patientManager.addPatient(patient);
+		return false;
+	}
 	
 	/*/Adding patient to DB
 	@RequestMapping(value = "/register", method = RequestMethod.POST, consumes = "application/json")
@@ -191,9 +211,6 @@ public class WebController {
 	}
 	
 	
-
-
-
 	/**
 	 * Added by Irwin Soni
 	 *Try the methods using --> http://localhost:8080/getNameAndAddress
@@ -205,14 +222,14 @@ public class WebController {
 	@RequestMapping(value = "/getNameAndAddress", method = RequestMethod.GET) 
 	public static String getNameAndAddress(){
 		//gets name and address from the user
-        return "/Users/irwin/Documents/workspace/demo-web-project/src/main/resources/static/getNameAndAddress.html";
+        return "getNameAndAddress.html";
 	}
 
 
 	@RequestMapping(value = "/ReadFile", method = RequestMethod.GET) 
 	public void readFile(){
 		
-		File filename = new File("/Users/irwin/Documents/workspace/demo-web-project/src/main/resources/static/ReadFile.html");
+		File filename = new File("ReadFile.html");
 		Scanner scan = null;
 		
 		try{

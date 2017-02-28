@@ -11,6 +11,10 @@ import org.springframework.context.annotation.Configuration;
 import edu.cpp.cs580.data.provider.EBayGpsProductManager;
 import edu.cpp.cs580.data.provider.FSUserManager;
 import edu.cpp.cs580.data.provider.GpsProductManager;
+import edu.cpp.cs580.data.provider.JDBCConnManager;
+import edu.cpp.cs580.data.provider.JDBCManager;
+import edu.cpp.cs580.data.provider.PatientManager;
+import edu.cpp.cs580.data.provider.UCPatientManager;
 import edu.cpp.cs580.data.provider.URLlinkManager;
 import edu.cpp.cs580.data.provider.UserManager;
 import edu.cpp.cs580.data.provider.urlInfo;
@@ -18,6 +22,7 @@ import edu.cpp.cs580.data.provider.urlInfo;
 @Configuration
 @EnableAutoConfiguration
 @ComponentScan
+
 public class App {
 
 	//private static final Logger logger = LoggerFactory.getLogger(App.class.getName());
@@ -45,17 +50,23 @@ public class App {
     		return urlInfo2Manager;
     }
     
+  
+   /********************************************************
+    * ******************************************************
+    * *******************************************************
+    ********************************************************/
+  /* @Bean 
+   
+   public JDBCConnManager jdbcManager(){
+	   JDBCConnManager jconnection = new JDBCManager();
+	   return jconnection;
+   }*/
     
-    /*@Bean(name = "dataSource")
-	public DriverManagerDataSource dataSource() {
-	    DriverManagerDataSource driverManagerDataSource = new DriverManagerDataSource();
-	    driverManagerDataSource.setDriverClassName("com.mysql.jdbc.Driver");
-	    driverManagerDataSource.setUrl("jdbc:mysql://localhost:3306/urgentcare");
-	    driverManagerDataSource.setUsername("user");
-	    driverManagerDataSource.setPassword("password");
-	    return driverManagerDataSource;
-	}*/
-    
+    @Bean
+    public PatientManager ucpatientManager(){
+    	PatientManager patientManager = new UCPatientManager();
+    	return patientManager;
+    }
     /**
      * This is the running main method for the web application.
      * Please note that Spring requires that there is one and

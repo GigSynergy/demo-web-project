@@ -4,6 +4,7 @@ angular.module('myApp')
 
     $scope.addPatient = function() {
     	console.log($scope.patient);
+    	JSON.stringify($scope.patient);
         
     };
 }])

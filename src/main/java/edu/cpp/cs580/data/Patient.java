@@ -10,62 +10,44 @@ public class Patient
 	
 	private String facilityID;
 	private int queueNumber;
-	
-	
-	public String getfirstName(){
+	public String getFirstName() {
 		return firstName;
 	}
-	
-	public void setfirstName(String firstName){
+	public void setFirstName(String firstName) {
 		this.firstName = firstName;
 	}
-	
-	public String getmiddleName(){
+	public String getMiddleName() {
 		return middleName;
 	}
-	
-	public void setmiddleName(String middleName){
+	public void setMiddleName(String middleName) {
 		this.middleName = middleName;
 	}
-	
-	public String getlastName(){
+	public String getLastName() {
 		return lastName;
 	}
-	
-	public void setlastName(String lastName){
+	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
-	
-	public String getphoneNumber(){
+	public String getPhoneNumber() {
 		return phoneNumber;
 	}
-	
-	public void setMessage(String phoneNumber){
+	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
+	}
+	public String getFacilityID() {
+		return facilityID;
+	}
+	public void setFacilityID(String facilityID) {
+		this.facilityID = facilityID;
+	}
+	public int getQueueNumber() {
+		return queueNumber;
+	}
+	public void setQueueNumber(int queueNumber) {
+		this.queueNumber = queueNumber;
 	}
 	
 
-	
-	public String getFacilityID()
-	{
-		return facilityID;
-	}
-	
-	public void setFacilityID(String facilityID)
-	{
-		this.facilityID = facilityID;
-		
-	}
-	
-	public int getQueueNumber()
-	{
-		return queueNumber;
-	}
-	
-	public void setQueueNumber(int queueNumber)
-	{
-		this.queueNumber = queueNumber;
-	}
 }
 
 	
