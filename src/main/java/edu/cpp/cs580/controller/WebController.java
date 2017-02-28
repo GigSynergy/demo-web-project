@@ -110,7 +110,7 @@ public class WebController {
 	 */
 	@RequestMapping(value = "/cs580/patient", method = RequestMethod.POST)
 	public boolean  InsertPatient(@RequestBody Patient patient) {
-		System.out.println(patient.getfirstName());
+		System.out.println(patient.getFirstName());
 		patientManager.addPatient(patient);
 		return false;
 	}

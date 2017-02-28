@@ -14,7 +14,7 @@ public class  JDBCManager implements JDBCConnManager
 			{
 			// 1. Get a Connection to DB
 			
-			Connection myConn = DriverManager.getConnection("jdbc:mysql://localhost:3306/urgentcare","user","password");
+			Connection myConn = DriverManager.getConnection("jdbc:mysql://localhost:3306/urgentcare","root","Sandhya@26");
 			// 2. Create a Statement
 			Statement myStat = myConn.createStatement();
 			// 3. Create a ResultSet
