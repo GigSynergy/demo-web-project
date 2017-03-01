@@ -20,6 +20,7 @@ import edu.cpp.cs580.data.Patient;
 import edu.cpp.cs580.data.UrgentCareInfo;
 import edu.cpp.cs580.data.User;
 import edu.cpp.cs580.data.provider.GpsProductManager;
+import edu.cpp.cs580.data.provider.PatientManager;
 import edu.cpp.cs580.data.provider.UCPatientManager;
 import edu.cpp.cs580.data.provider.URLlinkManager;
 import edu.cpp.cs580.data.provider.UserManager;
@@ -52,9 +53,7 @@ public class WebController {
 	
 	@Autowired
 	private URLlinkManager urlInfo2Manager ;
-	
-	//@Autowired
-	//private JDBCConnManager  jconnection;
+
 	
 	@Autowired
 	private UCPatientManager patientManager;
@@ -109,30 +108,15 @@ public class WebController {
 	 * }
 	 */
 	@RequestMapping(value = "/cs580/patient", method = RequestMethod.POST)
-	public boolean  InsertPatient(@RequestBody Patient patient) {
-		System.out.println(patient.getFirstName());
+	public boolean  InsertPatient(@RequestBody Patient patient) 
+	{
+		System.out.print(patient.getFirstName());
+		System.out.println(patient.getLastName());
 		patientManager.addPatient(patient);
 		return false;
 	}
 	
-	/*/Adding patient to DB
-	@RequestMapping(value = "/register", method = RequestMethod.POST, consumes = "application/json")
-	public boolean register(@RequestBody String registerDetails) throws JsonParseException, JsonMappingException, IOException {
-            Gson gson = new GsonBuilder().create();
-            Register register = gson.fromJson(registerDetails, Register.class);
-            List<String> list = new ArrayList<>();
-            list = patientManager.isPatientExist(register.getEmail());
-
-            if (list.isEmpty()) {
-                patientManager.register(register);
-                return true;
-            } 
-            else 
-            {
-                return false;
-            }
-	}
-	  }*/
+	
 	
 	/**
 	 * This is a simple example of how to use a data manager

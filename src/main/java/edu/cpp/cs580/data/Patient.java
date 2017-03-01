@@ -3,13 +3,14 @@ package edu.cpp.cs580.data;
 public class Patient 
 
 {
+	private int pID;
 	private String firstName;
 	private String middleName;
 	private String lastName;
-	private String phoneNumber;
-	
+	private String phone;
 	private String facilityID;
-	private int queueNumber;
+	private String waitTime;
+	
 	public String getFirstName() {
 		return firstName;
 	}
@@ -28,23 +29,31 @@ public class Patient
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
-	public String getPhoneNumber() {
-		return phoneNumber;
-	}
-	public void setPhoneNumber(String phoneNumber) {
-		this.phoneNumber = phoneNumber;
-	}
+	
 	public String getFacilityID() {
 		return facilityID;
 	}
 	public void setFacilityID(String facilityID) {
 		this.facilityID = facilityID;
 	}
-	public int getQueueNumber() {
-		return queueNumber;
+	
+	public int getpID() {
+		return pID;
 	}
-	public void setQueueNumber(int queueNumber) {
-		this.queueNumber = queueNumber;
+	public void setpID(int pID) {
+		this.pID = pID;
+	}
+	public String getPhone() {
+		return phone;
+	}
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+	public String getWaitTime() {
+		return waitTime;
+	}
+	public void setWaitTime(String waitTime) {
+		this.waitTime = waitTime;
 	}
 	
 
