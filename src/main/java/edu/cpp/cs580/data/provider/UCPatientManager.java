@@ -15,13 +15,12 @@ public class UCPatientManager implements PatientManager
 		@Override
 		public boolean addPatient(Patient p)
 		{
-			
-			int lastid = 5;
+			int numberRow=0;
 			int facilityid = 2;
+			int count = 0;
 			//int facilityid = Integer.parseInt(p.getFacilityID());
 			System.out.println("You are in addPatient function");
 			System.out.println(p.getFirstName());
-			
 			try {
 				
 			JDBCManager myConn = new JDBCManager();
@@ -39,12 +38,21 @@ public class UCPatientManager implements PatientManager
 			String lname = p.getLastName();
 			System.out.println(lname);
 			String fname = p.getFirstName();
-			System.out.println(lname);
+			System.out.println(fname);
 			String mname = p.getMiddleName();
-			System.out.println(lname);
+			System.out.println(mname);
 			
-			myStat.executeUpdate("INSERT INTO urgentcaredb.tblpatient VALUES ('"+lastid+"','"+phone+"', '"+fname+"', '"+mname+"', '"+lname+"','"+Date+"'  , '"+Time+"' , '2','5')");	
-				ResultSet myRs = myStat.executeQuery("select * from urgentcaredb.tblpatient");
+			ResultSet myRs,rs;
+			
+			rs = myStat.executeQuery("SELECT * FROM urgentcaredb.tblpatient");
+			while(rs.next())
+			{
+			        numberRow = rs.getInt("Patient_ID") +1;
+			} 
+			
+			
+			myStat.executeUpdate("INSERT INTO urgentcaredb.tblpatient VALUES ('"+numberRow+"','"+phone+"', '"+fname+"', '"+mname+"', '"+lname+"','"+Date+"'  , '"+Time+"' , '2','5')");	
+			myRs = myStat.executeQuery("select * from urgentcaredb.tblpatient");
 					//System.out.println(s);	
 					connect.close();
 					return true;
