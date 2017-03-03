@@ -69,26 +69,26 @@
       <form action="">
       <h3>Enter Patient's Information</h3>
       <label for="fname">First Name</label>
-      <input type="text" ng-model="patient.firstName" plaecholder="Your name.."> <br>
+      <input type="text" ng-model="patient.firstName" required> <br>
      <!--   <input type="text" id="fname" name="firstname" plaecholder="Your name.."><br> -->
 
       <label for="mname">Middle Name</label>
-      <input type="text" ng-model="patient.middleName" plaecholder="Your middle name.."><br>
+      <input type="text" ng-model="patient.middleName" ><br>
       <!-- <input type="text" id="mname" name="middlename" plaecholder="Your middle name.."><br> -->
 
       <label for="lname">Last Name</label>
-      <input type="text" ng-model="patient.lastName" plaecholder="Your last name.."><br>
+      <input type="text" ng-model="patient.lastName" required><br>
      <!--  <input type="text" id="lname" name="lastname" plaecholder="Your last name.."><br> -->
 
       <label for="phone">Phone Number</label>
-      <input type="text" ng-model="patient.phone" plaecholder="Your phone number.."><br>
+      <input type="text" ng-model="patient.phone" required><br>
      <!-- <input type="text" id="phone" name="phonenumber" plaecholder="Your phone number.."><br> -->
      
      <label for="phone">Urgent Care</label>
-      <input type="text" ng-model="patient.ucName"> <br>
+      <input type="text" ng-model="patient.ucName" value="Some UCNAME"disabled> <br>
       
       <label for="phone">Wait Time </label>
-      <input type="text" ng-model="patient.ucWaitTime"> <br>
+      <input type="text" ng-model="patient.ucWaitTime" value="Some wait time" disabled> <br>
       
 	 <button ng-click="save()">Save</button>
        
@@ -96,11 +96,10 @@
   <!--  <input type="submit" value="Submit"> 
   <input type="reset"> -->
 
-
-</form>
+	</form>
 </div>
-
-	</body>
+	
+</body>
 </html>
 
 
