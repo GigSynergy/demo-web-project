@@ -96,17 +96,6 @@ public class WebController {
 
 	}	
 	
-	// Request Mapping Method for adding a patient.
-	/*
-	 * {
-	 * 	"firstName" : "Yu",
-	 *  "lastName" : "Sun",
-	 *  ..
-	 *  ..
-	 *  ..
-	 *  ..
-	 * }
-	 */
 	@RequestMapping(value = "/cs580/patient", method = RequestMethod.POST)
 	public boolean  InsertPatient(@RequestBody Patient patient) 
 	{

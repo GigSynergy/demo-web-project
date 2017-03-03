@@ -1,6 +1,49 @@
 <!DOCTYPE html>
-<html>
- <script type="text/javascript"></script>
+<!--  Changes are started here -->
+<html ng-controller="patient-controller" ng-model="patient">
+  <!--   <html ng-app="cs580App"> -->
+  <!--  This page is using AngularJS connecting patient info to Database. -->
+  <head>
+	    <title>CS580 Patient Registration Page</title>
+			<!-- AngularJS -->
+			<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+	    <script src="/js/patient-controller.js"></script>
+	    <!-- Latest compiled and minified CSS -->
+
+	    <script
+  src="https://code.jquery.com/jquery-3.1.1.js"
+  integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA="
+  crossorigin="anonymous"></script>
+   <script type="text/javascript"></script>
+</head>
+
+<!-- 
+<body ng-controller="patient-controller">
+ <form>  -->
+  	
+   <!--   First Name:   
+    <input type="text" ng-model="patient.firstName"><br>
+    Middle Name:
+    <input type="text" ng-model="patient.middleName"><br>
+    Last Name:
+    <input type="text" ng-model="patient.lastName"><br>
+    Phone Number:
+    <input type="text" ng-model="patient.phone"><br>
+    UC Name:
+    <input type="text" ng-model="patient.ucName"><br>
+    Wait Time :
+    <input type="text" ng-model="patient.waitTime"><br>
+    <br><br>
+    <button ng-click="save()">SUBMIT</button>
+ 
+  </form>
+</body>
+</html> -->
+
+<!--  changes are finished here ---- -->
+
+
+
 <style>
 	input[type=text], select {
 		width: 100%;
@@ -20,7 +63,7 @@
     text-decoration: none;
     margin: 4px 2px;
     cursor: pointer;
-  }
+  } 
 
   div{
     border-radius: 5px;
@@ -29,8 +72,9 @@
   }
 </style>
 
-	<body>
-	<h2>You Chose:</h2>
+<body ng-controller="patient-controller">
+
+  <h2>You Chose:</h2>
   <h2 id="demo"> </h2>
    <h2>With Waiting Time: </h2>
 	  <h2 id="demo2"></h2>
@@ -39,6 +83,7 @@
 
  var x = localStorage.getItem("placeName");
     document.getElementById("demo").innerHTML = x;
+    
 	
  var y = localStorage.getItem("placeTime");
     document.getElementById("demo2").innerHTML = y;
@@ -49,21 +94,28 @@
       <form action="">
       <h3>Enter Patient's Information</h3>
       <label for="fname">First Name</label>
-      <input type="text" id="fname" name="firstname" plaecholder="Your name.."><br>
+      <input type="text" ng-model="patient.firstName" plaecholder="Your name.."> <br>
+     <!--   <input type="text" id="fname" name="firstname" plaecholder="Your name.."><br> -->
 
       <label for="mname">Middle Name</label>
-      <input type="text" id="mname" name="middlename" plaecholder="Your middle name.."><br>
+      <input type="text" ng-model="patient.middleName" plaecholder="Your middle name.."><br>
+      <!-- <input type="text" id="mname" name="middlename" plaecholder="Your middle name.."><br> -->
 
       <label for="lname">Last Name</label>
-      <input type="text" id="lname" name="lastname" plaecholder="Your last name.."><br>
+      <input type="text" ng-model="patient.lastName" plaecholder="Your last name.."><br>
+     <!--  <input type="text" id="lname" name="lastname" plaecholder="Your last name.."><br> -->
 
       <label for="phone">Phone Number</label>
-      <input type="text" id="phone" name="phonenumber" plaecholder="Your phone number.."><br>
+      <input type="text" ng-model="patient.phone" plaecholder="Your phone number.."><br>
+     <!-- <input type="text" id="phone" name="phonenumber" plaecholder="Your phone number.."><br> -->
 
+		Wait Time :
+    	<input type="text" ng-model="patient.waitTime"><br>
+       <button ng-click="save()">Save</button>
+       
 
-
-  <input type="submit" value="Submit"> 
-  <input type="reset">
+  <!--  <input type="submit" value="Submit"> 
+  <input type="reset"> -->
 
 
 
