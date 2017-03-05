@@ -3,10 +3,13 @@ angular.module('cs580App',[])
 angular.module('cs580App')
 	
 	.controller('patient-controller',['$scope','$http',function($scope,$http) {
-
+	
+    	
     $scope.save = function() 
     {
+
     /*	var x = localStorage.getItem("placeName");
+    	var x = localStorage.getItem("placeName");
         document.getElementById("demo").innerHTML = x;
         
        
@@ -16,7 +19,9 @@ angular.module('cs580App')
         $scope.patient.ucWaitTime=y;
     	console.log($scope.patient);
     	//JSON.stringify($scope.patient);
+
     	
+
     	return $http.post("/cs580/patient",$scope.patient);*/
     };
     $scope.reset = function()
@@ -26,5 +31,7 @@ angular.module('cs580App')
     	$scope.patient.lastName='';
     	$scope.patient.phone='';
     	
+    	console.log($scope.patient);
+    	return $http.post("/cs580/patient",$scope.patient);
     };
 }])
