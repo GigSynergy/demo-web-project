@@ -3,6 +3,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 
 import java.sql.Statement;
+import java.util.Random;
 
 import org.springframework.stereotype.Component;
 
@@ -17,10 +18,18 @@ public class UCPatientManager implements PatientManager
 		{
 			int numberRow=0;
 			int facilityid = 0;
+			int facilityqn = 0;
 			
-			int count = 0;
-			String facilityname = p.getFacilityID();
-			String facilityqn = p.getWaitTime();
+			Random rand = new Random();
+			
+		    int randomNum = rand.nextInt((10 - 1) + 1) + 1;
+			facilityid = randomNum;
+			
+			System.out.println(facilityid);
+			String f_qn = p.getWaitTime();
+			facilityqn = 50; //Integer.parseInt(f_qn);
+			facilityqn = facilityqn/10; 
+			
 			System.out.println("You are in addPatient function");
 			System.out.println(p.getFirstName());
 			try 
@@ -53,10 +62,9 @@ public class UCPatientManager implements PatientManager
 			        numberRow = rs.getInt("Patient_ID") +1;
 			} 
 			
-	
 			System.out.println(facilityid);
 			System.out.println(facilityqn);
-			myStat.executeUpdate("INSERT INTO urgentcaredb.tblpatient VALUES ('"+numberRow+"','"+phone+"', '"+fname+"', '"+mname+"', '"+lname+"','"+Date+"'  , '"+Time+"' , '"+facilityname+"','"+facilityqn+"')");	
+			myStat.executeUpdate("INSERT INTO urgentcaredb.tblpatient VALUES ('"+numberRow+"','"+phone+"', '"+fname+"', '"+mname+"', '"+lname+"','"+Date+"'  , '"+Time+"' , '"+facilityid+"','"+facilityqn+"')");	
 			myRs = myStat.executeQuery("select * from urgentcaredb.tblpatient");
 					//System.out.println(s);	
 					connect.close();
