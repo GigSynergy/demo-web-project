@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 
-<!--  Changes are started here -->
+<html  ng-app="cs580App" ng-controller="patient-controller" ng-model="patient">
 
-<html ng-controller="patient-controller" ng-model="patient">
   <!--  This page is using AngularJS connecting front end to Database. -->
 
   <head>
@@ -77,18 +76,11 @@
 
 </style>
 
-<body ng-controller="patient-controller">
+<body ng-controller="patient-controller" >
     <div>
 
       <form action="">
 
-	<label for="ucName">Your choice: </label>
-
-      <input type="text" id="ucName" ng-model="patient.ucName" value="" disabled> <br>
-             
-      <label for="ucWaitTime">Your estimated waiting time in minutes:</label>
-
-      <input type="text" id="ucWaitTime" ng-model="patient.ucWaitTime" value="" disabled> <br> 
 
       <h3>Please fill in your information and check in</h3>
 
@@ -107,16 +99,22 @@
       <label for="phone">Phone Number</label>
 
       <input type="text" ng-model="patient.phone" placeholder="Phone Number" required><br>
+      
+      <label for="phone">Urgent Care</label>
 
-     	 
+      <input type="text" id="ucName" ng-model="patient.ucName" value="" disabled> <br>
+
+      <label for="phone">Wait Time </label>
+
+      <input type="text" id="ucWaitTime" ng-model="patient.ucWaitTime" value="" disabled> <br>
+	 
 	 <button ng-click="save()">Check in </button>
 	 <button ng-click="reset()">Reset </button>
 
   	</form>
 
 </div>
-
-	  <script type="text/javascript">
+<script type="text/javascript">
 
   var x = localStorage.getItem("placeName");
 
@@ -127,8 +125,7 @@
 
     document.getElementById("ucWaitTime").value = y;
     
-
-  </script>
+</script>
 
 </body>
 
