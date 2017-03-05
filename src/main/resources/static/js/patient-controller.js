@@ -6,6 +6,14 @@ angular.module('cs580App')
 
     $scope.save = function() 
     {
+    	var x = localStorage.getItem("placeName");
+        document.getElementById("demo").innerHTML = x;
+        
+       
+     	var y = localStorage.getItem("placeTime");
+        document.getElementById("demo2").innerHTML = y;
+        $scope.patient.ucName=x;
+        $scope.patient.ucWaitTime=y;
     	console.log($scope.patient);
     	//JSON.stringify($scope.patient);
     	

@@ -84,21 +84,22 @@
       <input type="text" ng-model="patient.phone" required><br>
      <!-- <input type="text" id="phone" name="phonenumber" plaecholder="Your phone number.."><br> -->
      
-     <label for="phone">Urgent Care</label>
-      <input type="text" ng-model="patient.ucName" value="Some UCNAME"disabled> <br>
+     <label for="ucName">Urgent Care</label>
+      <input type="text" ng-model="patient.ucName" value="JSON.parse(localStorage.getItem('demo')" disabled> <br>
       
-      <label for="phone">Wait Time </label>
-      <input type="text" ng-model="patient.ucWaitTime" value="Some wait time" disabled> <br>
-      
+      <label for="ucWaitTime">Wait Time </label>
+      <input type="text" ng-model="patient.ucWaitTime" value=localStorage.getItem("placeTime") disabled> <br>
+  
 	 <button ng-click="save()">Save</button>
        
-
+    
   <!--  <input type="submit" value="Submit"> 
   <input type="reset"> -->
 
+     console.log($scope.patient);
 	</form>
 </div>
-	
+	 
 </body>
 </html>
 
