@@ -1,0 +1,35 @@
+@media print {
+	.be-nice-to-Mac-IE5 { font-family: "\"}\""; font-family: inherit; }
+
+/* BODY AND FONTS: =body
+----------------------------------------------- */
+	*			{ margin: 0; padding: 0; }
+	body, tr, td, input, select, textarea { font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 11px; voice-family: "\"}\""; voice-family: inherit; font-size: 11px; }
+
+/* LINKS: =links
+----------------------------------------------- */
+	a 		{ text-decoration: underline; color: #065192; }
+	a:hover	{ text-decoration: none; }
+	a img 	{ border: none; }
+
+/* NAVIGATION: =nav
+----------------------------------------------- */
+	div#navbox, div.navigation-search-holder	{ display: none; }
+	div#subnav, div.subContent-block 
+	.baseContent, #header, .image-holder, .contHolder { display: none; }
+	
+	.fullContent { width:90%; float:left;}
+	
+/* FOOTER: =footer
+----------------------------------------------- */
+	#footer { width: 90%; }
+	
+	.footer-right { display:none; }
+
+/* MISC: =misc
+----------------------------------------------- */
+	
+	hr { display: none; }
+	
+	ul#breadCrumbs { display: none; }
+	

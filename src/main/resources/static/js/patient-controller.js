@@ -6,7 +6,7 @@ angular.module('cs580App')
 
     $scope.save = function() 
     {
-    	var x = localStorage.getItem("placeName");
+    /*	var x = localStorage.getItem("placeName");
         document.getElementById("demo").innerHTML = x;
         
        
@@ -17,6 +17,14 @@ angular.module('cs580App')
     	console.log($scope.patient);
     	//JSON.stringify($scope.patient);
     	
-    	return $http.post("/cs580/patient",$scope.patient);
+    	return $http.post("/cs580/patient",$scope.patient);*/
+    };
+    $scope.reset = function()
+    {
+    	$scope.patient.firstName ='';
+    	$scope.patient.middleName ='';
+    	$scope.patient.lastName='';
+    	$scope.patient.phone='';
+    	
     };
 }])

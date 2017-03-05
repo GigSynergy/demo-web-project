@@ -1,117 +1,154 @@
 <!DOCTYPE html>
+
 <!--  Changes are started here -->
-<html ng-app="cs580App"  >
-  
+
+<html ng-controller="patient-controller" ng-model="patient">
   <!--  This page is using AngularJS connecting front end to Database. -->
+
   <head>
-	    <title>CS580 Patient Registration Page</title>
+
+	    <title>Patient registration form</title>
+
 			<!-- AngularJS -->
+
 			<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+
 	    <script src="/js/patient-controller.js"></script>
+
 	    <!-- Latest compiled and minified CSS -->
 
 	    <script
+
   src="https://code.jquery.com/jquery-3.1.1.js"
+
   integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA="
+
   crossorigin="anonymous"></script>
+
    <script type="text/javascript"></script>
+
 </head>
 
-
 <style>
+
 	input[type=text], select {
+
 		width: 100%;
+
     padding: 12px 20px;
+
     margin: 8px 0;
+
     display: inline-block;
+
     border: 1px solid #ccc;
+
     border-radius: 4px;
+
     box-sizing: border-box;
+
 	}
-
   input[type=submit], input[type=reset]  {
-    background-color: #4CAF50;
-    border: none;
-    color: white;
-    padding: 16px 32px;
-    text-decoration: none;
-    margin: 4px 2px;
-    cursor: pointer;
-  } 
 
+    background-color: #4CAF50;
+
+    border: none;
+
+    color: white;
+
+    padding: 16px 32px;
+
+    text-decoration: none;
+
+    margin: 4px 2px;
+
+    cursor: pointer;
+
+  } 
   div{
+
     border-radius: 5px;
+
     background-color: #f2f2f2;
+
     padding: 20px;
+
   }
+
 </style>
 
-<body ng-controller="patient-controller" ng-model="patient">
-
-  <h2>You Chose:</h2>
-  <h2 id="demo"> </h2>
-   <h2>Waiting Time: </h2>
-   <h2 id="demo2"></h2>
-  <script type="text/javascript">
-  
- 	var x = localStorage.getItem("placeName");
-    document.getElementById("demo").innerHTML = x;
-    
-   
- 	var y = localStorage.getItem("placeTime");
-    document.getElementById("demo2").innerHTML = y;
-    
-    
-  </script>
-
-      
+<body ng-controller="patient-controller">
     <div>
+
       <form action="">
-      <h3>Enter Patient's Information</h3>
+
+	<label for="ucName">Your choice: </label>
+
+      <input type="text" id="ucName" ng-model="patient.ucName" value="" disabled> <br>
+             
+      <label for="ucWaitTime">Your estimated waiting time in minutes:</label>
+
+      <input type="text" id="ucWaitTime" ng-model="patient.ucWaitTime" value="" disabled> <br> 
+
+      <h3>Please fill in your information and check in</h3>
+
       <label for="fname">First Name</label>
-      <input type="text" ng-model="patient.firstName" required> <br>
-    
+
+      <input type="text" ng-model="patient.firstName" placeholder="First Name" required> <br>
 
       <label for="mname">Middle Name</label>
-      <input type="text" ng-model="patient.middleName" ><br>
-      
+
+      <input type="text" ng-model="patient.middleName" placeholder="Middle Name"><br>
 
       <label for="lname">Last Name</label>
-      <input type="text" ng-model="patient.lastName" required><br>
-     
+
+      <input type="text" ng-model="patient.lastName" placeholder="Last Name" required><br>
 
       <label for="phone">Phone Number</label>
-      <input type="text" ng-model="patient.phone" required><br>
-     
-    
 
-   
-     <label for="ucname">Urgent Care</label>
-      <input type="text" ng-model="patient.ucName"> <br>
-      
-      <label for="ucwait">Wait Time </label>
-      <input type="text" ng-model="patient.ucWaitTime" > <br>
+      <input type="text" ng-model="patient.phone" placeholder="Phone Number" required><br>
 
-      
- 
-  
-	 <button ng-click="save()">Save</button>
+     	 
+	 <button ng-click="save()">Check in </button>
+	 <button ng-click="reset()">Reset </button>
 
-       
-    
-  <!--  <input type="submit" value="Submit"> 
-  <input type="reset"> -->
+  	</form>
 
-	</form>
 </div>
-	 
+
+	  <script type="text/javascript">
+
+  var x = localStorage.getItem("placeName");
+
+    document.getElementById("ucName").value = x;
+
+
+  var y = localStorage.getItem("placeTime");
+
+    document.getElementById("ucWaitTime").value = y;
+    
+
+  </script>
+
 </body>
+
 </html>
 
 
+
+
+
   
+
   
+
   
+
+
+
+
+
+
 
 
 

