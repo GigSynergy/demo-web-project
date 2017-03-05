@@ -1,12 +1,16 @@
 <!DOCTYPE html>
 
-<html  ng-app="cs580App" ng-controller="patient-controller" ng-model="patient">
+<!--  Changes are started here -->
+
+<html ng-app="cs580App" ng-controller="patient-controller" ng-model="patient">
+
+  
 
   <!--  This page is using AngularJS connecting front end to Database. -->
 
   <head>
 
-	    <title>Patient registration form</title>
+	    <title>Check-In Form</title>
 
 			<!-- AngularJS -->
 
@@ -15,6 +19,8 @@
 	    <script src="/js/patient-controller.js"></script>
 
 	    <!-- Latest compiled and minified CSS -->
+
+
 
 	    <script
 
@@ -27,6 +33,10 @@
    <script type="text/javascript"></script>
 
 </head>
+
+
+
+
 
 <style>
 
@@ -47,6 +57,9 @@
     box-sizing: border-box;
 
 	}
+
+
+
   input[type=submit], input[type=reset]  {
 
     background-color: #4CAF50;
@@ -64,6 +77,9 @@
     cursor: pointer;
 
   } 
+
+
+
   div{
 
     border-radius: 5px;
@@ -76,78 +92,97 @@
 
 </style>
 
-<body ng-controller="patient-controller" >
-    <div>
+
+
+<body ng-controller="patient-controller">
+
+    <div >
 
       <form action="">
 
-
-      <h3>Please fill in your information and check in</h3>
+      <h3>Please Fill In Your Details and Check-In</h3>
 
       <label for="fname">First Name</label>
 
-      <input type="text" ng-model="patient.firstName" placeholder="First Name" required> <br>
+      <input type="text" ng-model="patient.firstName" placeholder="Enter First Name" required> <br>
+
+     <!--   <input type="text" id="fname" name="firstname" plaecholder="Your name.."><br> -->
+
+
 
       <label for="mname">Middle Name</label>
 
-      <input type="text" ng-model="patient.middleName" placeholder="Middle Name"><br>
+      <input type="text" ng-model="patient.middleName" ><br>
+
+      <!-- <input type="text" id="mname" name="middlename" plaecholder="Your middle name.."><br> -->
+
+
 
       <label for="lname">Last Name</label>
 
-      <input type="text" ng-model="patient.lastName" placeholder="Last Name" required><br>
+      <input type="text" ng-model="patient.lastName" placeholder="Enter Last Name" required><br>
+
+     <!--  <input type="text" id="lname" name="lastname" plaecholder="Your last name.."><br> -->
+
+
 
       <label for="phone">Phone Number</label>
 
-      <input type="text" ng-model="patient.phone" placeholder="Phone Number" required><br>
-      
-      <label for="phone">Urgent Care</label>
+      <input type="text" ng-model="patient.phone" placeholder="Enter Phone Number" required><br>
+
+     <!-- <input type="text" id="phone" name="phonenumber" plaecholder="Your phone number.."><br> -->
+
+     
+
+     <label for="phone">Urgent Care</label>
 
       <input type="text" id="ucName" ng-model="patient.ucName" value="" disabled> <br>
 
+      
+
       <label for="phone">Wait Time </label>
 
-      <input type="text" id="ucWaitTime" ng-model="patient.ucWaitTime" value="" disabled> <br>
-	 
-	 <button ng-click="save()">Check in </button>
-	 <button ng-click="reset()">Reset </button>
+      <input type="text" id="ucWaitTime" ng-model="patient.WaitTime" value="" disabled> <br>
 
-  	</form>
+      
+
+	 <button ng-click="save()">Check-In</button>
+	<button ng-click="reset()">Reset</button>
+       
+
+
+
+  <!--  <input type="submit" value="Submit"> 
+
+  <input type="reset"> -->
+
+
+
+	</form>
 
 </div>
-<script type="text/javascript">
+
+	  <script type="text/javascript">
+
+  
 
   var x = localStorage.getItem("placeName");
 
     document.getElementById("ucName").value = x;
 
+   
 
   var y = localStorage.getItem("placeTime");
 
     document.getElementById("ucWaitTime").value = y;
+
+
+
     
-</script>
+
+  </script>
 
 </body>
 
 </html>
-
-
-
-
-
-  
-
-  
-
-  
-
-
-
-
-
-
-
-
-
-
 
