@@ -16,12 +16,15 @@ public class UCPatientManager implements PatientManager
 		public boolean addPatient(Patient p)
 		{
 			int numberRow=0;
-			int facilityid = 2;
+			int facilityid = 0;
+			
 			int count = 0;
-			//int facilityid = Integer.parseInt(p.getFacilityID());
+			String facilityname = p.getFacilityID();
+			String facilityqn = p.getWaitTime();
 			System.out.println("You are in addPatient function");
 			System.out.println(p.getFirstName());
-			try {
+			try 
+			{
 				
 			JDBCManager myConn = new JDBCManager();
 			Connection connect = myConn.createJDBCconnection();
@@ -50,8 +53,10 @@ public class UCPatientManager implements PatientManager
 			        numberRow = rs.getInt("Patient_ID") +1;
 			} 
 			
-			
-			myStat.executeUpdate("INSERT INTO urgentcaredb.tblpatient VALUES ('"+numberRow+"','"+phone+"', '"+fname+"', '"+mname+"', '"+lname+"','"+Date+"'  , '"+Time+"' , '2','5')");	
+	
+			System.out.println(facilityid);
+			System.out.println(facilityqn);
+			myStat.executeUpdate("INSERT INTO urgentcaredb.tblpatient VALUES ('"+numberRow+"','"+phone+"', '"+fname+"', '"+mname+"', '"+lname+"','"+Date+"'  , '"+Time+"' , '"+facilityname+"','"+facilityqn+"')");	
 			myRs = myStat.executeQuery("select * from urgentcaredb.tblpatient");
 					//System.out.println(s);	
 					connect.close();
