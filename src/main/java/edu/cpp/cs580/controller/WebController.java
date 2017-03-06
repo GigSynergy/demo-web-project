@@ -15,15 +15,15 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import edu.cpp.cs580.App;
-import edu.cpp.cs580.data.GpsProduct;
+
 import edu.cpp.cs580.data.Patient;
 import edu.cpp.cs580.data.UrgentCareInfo;
 import edu.cpp.cs580.data.User;
-import edu.cpp.cs580.data.provider.GpsProductManager;
+
 import edu.cpp.cs580.data.provider.PatientManager;
 import edu.cpp.cs580.data.provider.UCPatientManager;
 import edu.cpp.cs580.data.provider.URLlinkManager;
-import edu.cpp.cs580.data.provider.UserManager;
+
 
 
 
@@ -46,13 +46,6 @@ public class WebController {
 	 * In our project, all the beans are defined in
 	 * the {@link App} class.
 	 */
-	@Autowired
-	private UserManager userManager;
-	@Autowired
-	private GpsProductManager gpsManager;
-	
-	@Autowired
-	private URLlinkManager urlInfo2Manager ;
 
 	
 	@Autowired
@@ -66,7 +59,7 @@ public class WebController {
 	 * in your web browser, type the link:
 	 * 	http://localhost:8080/cs580/ping
 	 */
-	@RequestMapping(value = "/cs580/healthcheck", method = RequestMethod.GET)
+	/**@RequestMapping(value = "/cs580/healthcheck", method = RequestMethod.GET)
 	String healthCheck() {
 		// You can replace this with other string,
 		// and run the application locally to check your changes
@@ -82,19 +75,19 @@ public class WebController {
 		return gpsManager.listGps();
 	}
 	
-	/**
+	
 	 * Added by Shubhangi Shimpi
 	 * Try the method using --> http://localhost:8080/URLlink
 	 
 	 * @return
-	 */
+	 
 	
 	@RequestMapping(value = "/cs580/ucilist", method = RequestMethod.GET) 
 	List<UrgentCareInfo> listInfo()
 	{
 		return urlInfo2Manager.listInfo();
 
-	}	
+	}	*/
 	
 	@RequestMapping(value = "/cs580/patient", method = RequestMethod.POST)
 	public boolean  InsertPatient(@RequestBody Patient patient) 
@@ -118,7 +111,7 @@ public class WebController {
 	 * Try it in your web browser:
 	 * 	http://localhost:8080/cs580/user/user101
 	 */
-	@RequestMapping(value = "/cs580/user/{userId}", method = RequestMethod.GET)
+	/*@RequestMapping(value = "/cs580/user/{userId}", method = RequestMethod.GET)
 	User getUser(@PathVariable("userId") String userId) {
 		User user = userManager.getUser(userId);
 		return user;
@@ -129,7 +122,7 @@ public class WebController {
 	{
 		System.out.print("Zipcode entered is" + zipcode);
 		return zipcode;
-	}
+	}*/
 
 	/**
 	 * This is an example of sending an HTTP POST request to
@@ -148,7 +141,7 @@ public class WebController {
 	 * @param name
 	 * @param major
 	 * @return
-	 */
+	 
 	@RequestMapping(value = "/cs580/user/{userId}", method = RequestMethod.POST)
 	User updateUser(
 			@PathVariable("userId") String id,
@@ -162,26 +155,26 @@ public class WebController {
 		return user;
 	}
 
-	/**
+	
 	 * This API deletes the user. It uses HTTP DELETE method.
 	 *
 	 * @param userId
-	 */
+	 *
 	@RequestMapping(value = "/cs580/user/{userId}", method = RequestMethod.DELETE)
 	void deleteUser(
 			@PathVariable("userId") String userId) {
 		userManager.deleteUser(userId);
-	}
+	}*/
 
 	/**
 	 * This API lists all the users in the current database.
 	 *
 	 * @return
-	 */
+	 
 	@RequestMapping(value = "/cs580/users/list", method = RequestMethod.GET)
 	List<User> listAllUsers() {
 		return userManager.listAllUsers();
-	}
+	}*/
 	
 	
 	/**
@@ -190,48 +183,26 @@ public class WebController {
                             --> http://localhost:8080/ReadFile
 	 
 	 * @return
-	 */
+	 
 	
 	@RequestMapping(value = "/getNameAndAddress", method = RequestMethod.GET) 
 	public static String getNameAndAddress(){
 		//gets name and address from the user
         return "getNameAndAddress.html";
-	}
+	}*/
 
-
-	@RequestMapping(value = "/ReadFile", method = RequestMethod.GET) 
-	public void readFile(){
-		
-		File filename = new File("ReadFile.html");
-		Scanner scan = null;
-		
-		try{
-			scan = new Scanner(filename);
-			
-			// opens and reads the file ReadFile.html
-			
-			while(scan.hasNextLine()){
-				System.out.println(scan.nextLine());
-				
-			}
-			}
-		catch(FileNotFoundException e){
-			e.printStackTrace();
-		}
-		}
-		
 		
 
 	/*********** Web UI Test Utility **********/
 	/**
 	 * This method provide a simple web UI for you to test the different
 	 * functionalities used in this web service.
-	 */
+	
 	@RequestMapping(value = "/cs580/home", method = RequestMethod.GET)
 	ModelAndView getUserHomepage() {
 		ModelAndView modelAndView = new ModelAndView("home");
 		modelAndView.addObject("users", listAllUsers());
 		return modelAndView;
-	}
+	} */
 
 }

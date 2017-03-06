@@ -8,15 +8,13 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
-import edu.cpp.cs580.data.provider.EBayGpsProductManager;
-import edu.cpp.cs580.data.provider.FSUserManager;
-import edu.cpp.cs580.data.provider.GpsProductManager;
+
 import edu.cpp.cs580.data.provider.JDBCConnManager;
 import edu.cpp.cs580.data.provider.JDBCManager;
 import edu.cpp.cs580.data.provider.PatientManager;
 import edu.cpp.cs580.data.provider.UCPatientManager;
 import edu.cpp.cs580.data.provider.URLlinkManager;
-import edu.cpp.cs580.data.provider.UserManager;
+
 import edu.cpp.cs580.data.provider.urlInfo;
 
 @Configuration
@@ -31,7 +29,7 @@ public class App {
      * objects. The instances generated from this method
      * will be used in this project, where the Autowired
      * annotation is applied.
-     */
+     
     @Bean
     public UserManager userManager() {
         UserManager userManager =  new FSUserManager();
@@ -51,16 +49,17 @@ public class App {
     }
     
   
-   /********************************************************
+   ********************************************************
     * ******************************************************
     * *******************************************************
-    ********************************************************/
-  /* @Bean 
+    ********************************************************
+  @Bean 
    
    public JDBCConnManager jdbcManager(){
 	   JDBCConnManager jconnection = new JDBCManager();
 	   return jconnection;
-   }*/
+   }
+  */
     
     @Bean
     public PatientManager ucpatientManager(){
