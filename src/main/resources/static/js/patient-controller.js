@@ -31,7 +31,5 @@ angular.module('cs580App')
     	$scope.patient.lastName='';
     	$scope.patient.phone='';
     	
-    	console.log($scope.patient);
-    	//return $http.post("/cs580/patient",$scope.patient);
     };
 }])
