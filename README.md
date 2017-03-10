@@ -1,11 +1,7 @@
-This line is added to README file to check if github will notifty jenkins of new change!!!
-
 Overview
 --------
-
-The skeleton of the demo web project for CS580.
-
-This project is designed to let you practice the different aspects of software engineering, such as version control, design, tests, build, deployment, and maintenance.
+This project is designed to solve problem of long waiting time at the urgent care facilities. 
+The application allows users to search nearby facilities using zipcode or city name and to reserve a spot before stepping into the facility. 
 
 Environment Setup
 -----------------
@@ -14,26 +10,24 @@ Environment Setup
 2. Install the Eclipse 4+ (http://www.eclipse.org/)
 3. Install the Maven Eclipse Plug-in using the update site (http://www.eclipse.org/m2e/download/) (The latest Eclipse should have Maven plug-in installed so you may not need to do this step)
 
-Importing the Project into Eclipse
-----------------------------------
 
-1. File->Import->Maven->Existing Maven Projects
-2. Select the directory containing the pom.xml file
-3. Finish
-
-Building the Project for the First Time
+Running the Project 
 ---------------------------------------
-1. Right-click on the project root folder->Maven->Update Project
+1. mvn compile
+2. mvn package 
+3. java -jar target/cs580-1.0.jar
+4. Go to : ec2-52-53-219-178.us-west-1.compute.amazonaws.com:8080/
 
-Running the Project Locally
-----------------------------------------
-1. Locate the App.java in src/main/java source folder and right-click on it->Run As->Java Application
-2. Verify the running process in your web browser by the following URLs:
-
-- http://localhost:8080/
-- http://localhost:8080/cs580/ping
-- http://localhost:8080/cs580/home
-- http://localhost:8080/home-ajs.html
-
+Technologies
+--------------------------------------
+AngularJS
+AWS
+Bootstrap
+Java
+JenkinsCI
+JUnit
+Maven
+MySQL 
+Spring
 
  
